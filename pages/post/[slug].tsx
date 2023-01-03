@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import PortableText from 'react-portable-text';
 import { CommentForm } from '../../components/CommentForm';
+import { Comments } from '../../components/Comments';
 import Header from '../../components/Header';
 import { sanityClient, urlFor } from '../../sanity';
 import { PostSerializers } from '../../serializers/postSerializers';
@@ -46,7 +47,8 @@ const PostPage = ({ post }: Props) => {
         </div>
       </article>
       <hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
-      <CommentForm />
+      <CommentForm postId={post._id} />
+      <Comments />
     </main>
   );
 };
