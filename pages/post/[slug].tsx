@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import PortableText from 'react-portable-text';
 import { CommentForm } from '../../components/CommentForm';
-import { Comments } from '../../components/Comments';
+import { Comment } from '../../components/Comment';
 import Header from '../../components/Header';
 import { sanityClient, urlFor } from '../../sanity';
 import { PostSerializers } from '../../serializers/postSerializers';
@@ -48,7 +48,20 @@ const PostPage = ({ post }: Props) => {
       </article>
       <hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
       <CommentForm postId={post._id} />
-      <Comments />
+
+      {/* Comments */}
+      <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto shadow space-y-2">
+        <h3 className="text-4xl">Comments</h3>
+        <hr className="pb-2" />
+
+        {post.comments.map((comment) => (
+          <Comment
+            key={comment._id}
+            name={comment.name}
+            comment={comment.comment}
+          />
+        ))}
+      </div>
     </main>
   );
 };
@@ -91,7 +104,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     'comments': *[
       _type == "comment" &&
-      post.ref == ^._id &&
+      post._ref == ^._id &&
       approved == true
     ],
     description,

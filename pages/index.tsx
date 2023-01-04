@@ -8,7 +8,7 @@ import { Post } from '../components/Post';
 import { sanityClient, urlFor } from '../sanity';
 import { Post as PostTypes } from '../typings';
 
-// 1:50:21
+// 2:24:05 Next finish comments component and get comments from db
 
 // To learn how commands have changed from Sanity Studio v2 to v3, check:        ║
 // https://www.sanity.io/help/studio-v2-vs-v3

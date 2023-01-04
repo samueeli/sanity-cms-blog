@@ -26,7 +26,7 @@ export const CommentForm = (props: any) => {
 
       setSubmitted(true);
 
-      console.log('samulin res', res.json());
+      console.log('createComment res', res.json());
     } catch (error) {
       console.error(error);
       setSubmitted(false);
